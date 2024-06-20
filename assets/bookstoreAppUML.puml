@@ -1,0 +1,108 @@
+@startuml
+title BOOK STORE APPLICATION - CLASS DIAGRAM
+
+class Book {
+    -bookId: long
+    -title: String
+    -description: String
+    -authorName: String
+    -authorEmail: String
+    -pricePerQty: double
+    -availableQty: int
+    +getBookId(): long
+    +setBookId(long): void
+    +getTitle(): String
+    +setTitle(String): void
+}
+
+class Order {
+    -orderId: long
+    -orderDate: LocalDateTime
+    -totalPrice: double
+    -userName: String
+    -userEmail: String
+    -userPhone: String
+    -address: String
+    +getOrderId(): long
+    +setOrderId(long): void
+    +setTotalPrice(double): void
+    +getTotalPrice(): double
+}
+
+interface OrderRepository {
+    +placeOrder(Order): long
+}
+
+class OrderRepositoryImpl implements OrderRepository {
+    +placeOrder(Order): long
+}
+
+interface OrderService {
+    +placeOrder(Order): long
+}
+
+class OrderServiceImpl implements OrderService {
+    -orderRepository: OrderRepository
+    +placeOrder(Order): long
+}
+
+interface BookService {
+    +add(Book): long
+    +update(Book): Book
+    +delete(Long): Book
+    +getAll(): List<Book>
+    +getDetail(long): Book
+    +search(String): List<Book>
+    +getBookInventory(long): long
+}
+
+class BookRepositoryImpl implements BookService {
+    +add(Book): long
+    +update(Book): Book
+    +delete(Long): Book
+    +getAll(): List<Book>
+    +getDetail(long): Book
+    +search(String): List<Book>
+    +getBookInventory(long): long
+}
+
+class BookController {
+    -bookService: BookService
+    +add(Book): long
+    +update(Book): Book
+    +delete(Long): Book
+    +getAll(): List<Book>
+    +getDetail(long): Book
+    +search(String): List<Book>
+}
+
+class OrderController {
+    -orderService: OrderService
+    +placeOrder(Order): long
+}
+
+class Author {
+    -name: String
+    +createBook(book: Book)
+    +deleteBook(book: Book)
+    +updateBook(book: Book)
+    +viewAllBooks(): List<Book>
+}
+
+class Customer {
+    -name: String
+    +viewAllBooks(): List<Book>
+    +searchBook(title: String): Book
+    +orderBook(book: Book)
+    +viewBookDetails(book: Book)
+    +viewAllBooksOwned(): List<Book>
+}
+
+OrderController --> OrderServiceImpl : uses
+OrderServiceImpl --> OrderRepositoryImpl : uses
+BookController --> BookService : uses
+BookRepositoryImpl --> Book : manages
+Author --> Book : creates/updates/deletes/views
+Customer --> Book : searches/views/orders
+
+@enduml

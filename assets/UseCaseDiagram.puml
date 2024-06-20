@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+title BOOK STORE APPLICATION - USE CASE DIAGRAM
+
+actor "Author" as Author #pink;line:red;line.bold;text:red
+actor "Customer" as Customer #aliceblue;line:blue;line.bold;text:blue
+
+rectangle BookStore {
+  usecase "Create a Book" as UC1
+  usecase "View Book Detail" as UC2
+  usecase "View All Books" as UC3
+  usecase "Delete a Book" as UC4
+  usecase "Update Book Detail" as UC5
+  usecase "Search a Book" as UC6
+  usecase "Order a Book" as UC7
+  usecase "View All Books He Owns" as UC8
+}
+
+Author --> UC1 : Create a Book
+Author --> UC4 : Delete a Book
+Author --> UC5 : Update a Book Detail
+Author --> UC2 : View Book Detail
+Author --> UC3 : View All his Books
+
+
+UC2 <-- Customer : View Detail of a Book
+UC3 <-- Customer : View All Books from All Authors
+UC6 <-- Customer : Search a Book
+UC7 <-- Customer: Order a Book
+UC8 <-- Customer : View All Books he Owns
+
+@enduml
