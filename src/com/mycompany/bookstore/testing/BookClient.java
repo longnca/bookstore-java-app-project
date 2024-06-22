@@ -3,12 +3,16 @@ package com.mycompany.bookstore.testing;
 import com.mycompany.bookstore.controller.BookController;
 import com.mycompany.bookstore.dto.BookDTO;
 
+import java.awt.print.Book;
+
 public class BookClient {
     public static void main(String[] args) {
         // Constructor
         BookController controller = new BookController();
         // Call the addBook method
         addBook(controller);
+        // Call the getBook method
+        getBook(controller, 111L);
     }
 
     private static void addBook(BookController controller) {
@@ -30,5 +34,13 @@ public class BookClient {
         } else {
             System.out.println("Some errors occurred while creating a new book.");
         }
+    }
+
+    private static void getBook(BookController controller, Long bookId) {
+        BookDTO bookDTO = controller.getBook(bookId);
+        System.out.println("Following are details for Book with ID: " + bookId);
+        System.out.println("Book name: " + bookDTO.getName());
+        System.out.println("Book author: " + bookDTO.getAuthorName());
+        System.out.println("Book price: " + bookDTO.getPricePerQty());
     }
 }

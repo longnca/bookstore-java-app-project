@@ -17,4 +17,9 @@ public class BookController {
         // Call to the Service layer add() method
         return this.bookService.add(bookDTO);
     }
+
+    public BookDTO getBook(Long bookId) {
+        // Call to the Service layer getBook method and return the book DTO object
+        return this.bookService.getBook(bookId);
+    }
 }

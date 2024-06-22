@@ -20,4 +20,19 @@ public class BookConverter {
         return be;
 
     }
+
+    public static BookDTO convertBookEntitytoBookDTO(BookEntity bookEntity) {
+
+        BookDTO bookDTO = new BookDTO();
+        bookDTO.setAuthorEmail(bookEntity.getAuthorEmail());
+        bookDTO.setAuthorName(bookEntity.getAuthorName());
+        bookDTO.setAvailableQty(bookEntity.getAvailableQty());
+        bookDTO.setBookId(bookEntity.getBookId());
+        bookDTO.setDescription(bookEntity.getDescription());
+        bookDTO.setName(bookEntity.getName());
+        bookDTO.setPricePerQty(bookEntity.getPricePerQty());
+
+        return bookDTO;
+
+    }
 }

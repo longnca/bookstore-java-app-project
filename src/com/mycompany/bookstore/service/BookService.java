@@ -6,4 +6,6 @@ public interface BookService {
 
     // DTO works closely with service and controller layers
     public Long add(BookDTO bookDTO);
+    //
+    public BookDTO getBook(Long bookId);
 }

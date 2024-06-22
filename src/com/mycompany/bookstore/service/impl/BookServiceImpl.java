@@ -34,5 +34,14 @@ public class BookServiceImpl implements BookService {
         BookEntity bookEntity = BookConverter.convertBookDTOtoBookEntity(bookDTO);
         return this.bookRepository.add(bookEntity);
     }
+
+    @Override
+    public BookDTO getBook(Long bookId) {
+        // Convert the Entity to Service compatible DTO class
+        // Adapter Design Pattern
+        BookEntity bookEntity = this.bookRepository.getDetail(bookId);
+        BookDTO bookDTO = BookConverter.convertBookEntitytoBookDTO(bookEntity);
+        return bookDTO;
+    }
 }
 

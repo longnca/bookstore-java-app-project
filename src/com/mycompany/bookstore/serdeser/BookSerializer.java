@@ -30,6 +30,7 @@ public class BookSerializer {
 
     /**
      * Deserialization is a process converting the stream of bytes stored in the data in the file back into its object.
+     *
      * @param bookId
      * @return
      */
