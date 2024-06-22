@@ -56,7 +56,27 @@ interface BookService {
     +getBookInventory(long): long
 }
 
-class BookRepositoryImpl implements BookService {
+class BookServiceImpl implements BookService {
+    +add(Book): long
+    +update(Book): Book
+    +delete(Long): Book
+    +getAll(): List<Book>
+    +getDetail(long): Book
+    +search(String): List<Book>
+    +getBookInventory(long): long
+}
+
+interface BookRepository {
+    +add(Book): long
+    +update(Book): Book
+    +delete(Long): Book
+    +getAll(): List<Book>
+    +getDetail(long): Book
+    +search(String): List<Book>
+    +getBookInventory(long): long
+}
+
+class BookRepositoryImpl implements BookRepository {
     +add(Book): long
     +update(Book): Book
     +delete(Long): Book
