@@ -5,9 +5,13 @@ import com.mycompany.bookstore.dto.BookDTO;
 
 public class BookClient {
     public static void main(String[] args) {
-
+        // Constructor
         BookController controller = new BookController();
+        // Call the addBook method
+        addBook(controller);
+    }
 
+    private static void addBook(BookController controller) {
         // Create the BookDTO and call the controller add(book) method
         BookDTO bookDTO = new BookDTO();
         bookDTO.setBookId(111L);
@@ -21,7 +25,7 @@ public class BookClient {
         // Call controller add() method and hold the return value
         Long bookId = controller.add(bookDTO);
 
-        if(bookId != null) {
+        if (bookId != null) {
             System.out.println("Book was successfully created with Id: " + bookId);
         } else {
             System.out.println("Some errors occurred while creating a new book.");

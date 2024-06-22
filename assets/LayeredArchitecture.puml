@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+title BOOK STORE APPLICATION - LAYERED ARCHITECTURE DIAGRAM
+
+
+package "Application Layers" {
+  [Client Layer]
+  [Controller Layer]
+  [Service Layer]
+  [Repository Layer]
+}
+
+package "Entities" {
+  [Book Entity\nname, price]
+}
+
+cloud "RAM" {
+  [RAM (memory)]
+}
+
+database "Storage" {
+  [Save to a File]
+}
+
+[Client Layer] --> [Controller Layer]
+[Controller Layer] --> [Service Layer]
+[Service Layer] --> [Repository Layer]
+[Repository Layer] --> [Book Entity\nname, price]
+[Book Entity\nname, price] --> [Save to a File]
+[RAM (memory)] --> [Book Entity\nname, price] : serialization
+
+@enduml

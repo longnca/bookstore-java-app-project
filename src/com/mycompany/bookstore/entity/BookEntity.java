@@ -1,6 +1,13 @@
 package com.mycompany.bookstore.entity;
 
-public class BookEntity {
+import java.io.Serializable;
+
+public class BookEntity implements Serializable {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = -1188862042327524323L;
 
     private Long bookId;
     private String name;
@@ -9,6 +16,8 @@ public class BookEntity {
     private Integer availableQty;
     private String authorName;
     private String authorEmail;
+
+    // public BookEntity() {}
 
     public Long getBookId() {
         return bookId;
