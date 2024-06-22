@@ -32,7 +32,7 @@ public class BookServiceImpl implements BookService {
         // Convert the DTO to Repository compatible Entity class
         // Adapter Design Pattern
         BookEntity bookEntity = BookConverter.convertBookDTOtoBookEntity(bookDTO);
-        return null;
+        return this.bookRepository.add(bookEntity);
     }
 }
 
