@@ -20,6 +20,7 @@ public class BookClient {
 
         // Call controller add() method and hold the return value
         Long bookId = controller.add(bookDTO);
+
         if(bookId != null) {
             System.out.println("Book was successfully created with Id: " + bookId);
         } else {
