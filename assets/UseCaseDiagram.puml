@@ -13,20 +13,20 @@ rectangle BookStore {
   usecase "Update Book Detail" as UC5
   usecase "Search a Book" as UC6
   usecase "Order a Book" as UC7
-  usecase "View All Books He Owns" as UC8
+  usecase "View All Books Owned" as UC8
 }
 
 Author --> UC1 : Create a Book
 Author --> UC4 : Delete a Book
-Author --> UC5 : Update a Book Detail
+Author --> UC5 : Update Book Detail
 Author --> UC2 : View Book Detail
-Author --> UC3 : View All his Books
+Author --> UC3 : View All Books
 
 
-UC2 <-- Customer : View Detail of a Book
-UC3 <-- Customer : View All Books from All Authors
+UC2 <-- Customer : View Book Detail
+UC3 <-- Customer : View All Books
 UC6 <-- Customer : Search a Book
 UC7 <-- Customer: Order a Book
-UC8 <-- Customer : View All Books he Owns
+UC8 <-- Customer : View All Books Owned
 
 @enduml

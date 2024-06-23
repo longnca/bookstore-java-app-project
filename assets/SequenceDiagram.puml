@@ -3,27 +3,26 @@
 autonumber
 title BOOK STORE APPLICATION - SEQUENCE DIAGRAM
 
-participant OrderController as Foo
-participant OrderService as Foo1
-participant OrderRepository as Foo2
-participant BookService as Foo3
+participant BookController as BookController
+participant BookService as BookServiceImpl
+participant BookRepository as BookRepositoryImpl
+participant BookSerializer as BookSerializer
 
-rnote over Foo: placeOrder()
-activate Foo
-Foo -> Foo1: dispatch
-activate Foo1
-rnote over Foo1: placeOrder()
-Foo1 -> Foo3: dispatch
-activate Foo3
-rnote over Foo3: getBookInventory()
-Foo1 <-- Foo3: return
-deactivate Foo3
-Foo1 -> Foo2: dispatch
-activate Foo2
-rnote over Foo2: placeOrder()
-Foo1 <-- Foo2: return
-deactivate Foo2
-Foo <-- Foo1: return
-deactivate Foo1
+rnote over BookController: add(BookDTO)
+activate BookController
+BookController -> BookServiceImpl: add(BookDTO)
+activate BookServiceImpl
+rnote over BookServiceImpl: add(BookDTO)
+BookServiceImpl -> BookRepositoryImpl: add(BookEntity)
+activate BookRepositoryImpl
+rnote over BookRepositoryImpl: add(BookEntity)
+BookRepositoryImpl -> BookSerializer: serializeBook(BookEntity)
+activate BookSerializer
+BookRepositoryImpl <-- BookSerializer: return
+deactivate BookSerializer
+BookServiceImpl <-- BookRepositoryImpl: return
+deactivate BookRepositoryImpl
+BookController <-- BookServiceImpl: return
+deactivate BookServiceImpl
 
 @enduml

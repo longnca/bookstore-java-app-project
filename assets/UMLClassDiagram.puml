@@ -1,0 +1,96 @@
+@startuml
+title BOOK STORE APPLICATION - CLASS DIAGRAM
+
+class BookEntity {
+    -bookId: Long
+    -name: String
+    -description: String
+    -pricePerQty: Double
+    -availableQty: Integer
+    -authorName: String
+    -authorEmail: String
+    +getBookId(): Long
+    +setBookId(Long): void
+    +getName(): String
+    +setName(String): void
+    +getDescription(): String
+    +setDescription(String): void
+    +getPricePerQty(): Double
+    +setPricePerQty(Double): void
+    +getAvailableQty(): Integer
+    +setAvailableQty(Integer): void
+    +getAuthorName(): String
+    +setAuthorName(String): void
+    +getAuthorEmail(): String
+    +setAuthorEmail(String): void
+}
+
+interface BookRepository {
+    +add(BookEntity): Long
+    +getDetail(Long): BookEntity
+}
+
+class BookRepositoryImpl implements BookRepository {
+    +add(BookEntity): Long
+    +getDetail(Long): BookEntity
+}
+
+interface BookService {
+    +add(BookDTO): Long
+    +getBook(Long): BookDTO
+}
+
+class BookServiceImpl implements BookService {
+    -bookRepository: BookRepository
+    +add(BookDTO): Long
+    +getBook(Long): BookDTO
+}
+
+class BookController {
+    -bookService: BookService
+    +add(BookDTO): Long
+    +getBook(Long): BookDTO
+}
+
+class BookDTO {
+    -bookId: Long
+    -name: String
+    -description: String
+    -pricePerQty: Double
+    -availableQty: Integer
+    -authorName: String
+    -authorEmail: String
+    +getBookId(): Long
+    +setBookId(Long): void
+    +getName(): String
+    +setName(String): void
+    +getDescription(): String
+    +setDescription(String): void
+    +getPricePerQty(): Double
+    +setPricePerQty(Double): void
+    +getAvailableQty(): Integer
+    +setAvailableQty(Integer): void
+    +getAuthorName(): String
+    +setAuthorName(String): void
+    +getAuthorEmail(): String
+    +setAuthorEmail(String): void
+}
+
+class BookConverter {
+    +convertBookDTOtoBookEntity(BookDTO): BookEntity
+    +convertBookEntitytoBookDTO(BookEntity): BookDTO
+}
+
+class BookSerializer {
+    +serializeBook(BookEntity): void
+    +deSerializeBook(Long): BookEntity
+}
+
+BookController --> BookService : uses
+BookServiceImpl ..|> BookService
+BookServiceImpl --> BookRepository : uses
+BookRepositoryImpl ..|> BookRepository
+BookServiceImpl --> BookConverter : uses
+BookRepositoryImpl --> BookSerializer : uses
+
+@enduml
