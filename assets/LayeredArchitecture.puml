@@ -2,11 +2,16 @@
 left to right direction
 title BOOK STORE APPLICATION - LAYERED ARCHITECTURE DIAGRAM
 
+package "Presentation Layers" {
+  [Client Layer]
+}
 
 package "Application Layers" {
-  [Client Layer]
   [Controller Layer]
   [Service Layer]
+}
+
+package "Persistence Layers" {
   [Repository Layer]
 }
 
@@ -14,11 +19,11 @@ package "Entities" {
   [Book Entity\nname, price]
 }
 
-cloud "RAM" {
+cloud "Serialization Layer" {
   [RAM (memory)]
 }
 
-database "Storage" {
+database "Storage Layer" {
   [Save to a File]
 }
 
